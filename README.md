@@ -10,8 +10,6 @@ Kiểm định phần mền  - Testing website Shop Quần Áo
 | 2001190243    | Đinh Phát Tài            | Thiết kế giao diện cho web, thực thi testcase, xem lại test plan, tìm hiểu tài liệu cần thiết cho nhóm    |
 | 2001190249    | Lê Nguyễn Đại Đức Tâm    | Thiết kế web, thực thi testcase, xem lại test plan, tìm hiểu tài liệu cần thiết cho nhóm                  |
 
-![image](https://user-images.githubusercontent.com/83421255/174773880-5c00c9fc-3c38-4063-a634-bba4fb217e67.png)
-
 
 # Demo
 Click ảnh để xem demo ⇓
