@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "DoiMatKhau";
+    Layout = "~/Views/Shared/_LayoutPageHome2.cshtml";
+}
+
+
+@using WebsiteShopQuanAo.Models;
+
+<style>
+    #divNavigation {
+        display: none;
+    }
+</style>
+<div class="width-details">
+    <div class="container text-center mt-4">
+@using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        var us = @Session["User"] as TAIKHOAN;
+            <h2 class="mb-3 fw-normal" style="text-align:center">ĐỔI MẬT KHẨU</h2>
+            <table class="table" style="width:60%; margin:auto; border:hidden">
+                <tr style="border:hidden;">
+                    <td style="text-align:right; width:30%;">Tên Đăng nhập: </td>
+                    <td><input type="text" name="UserName" value="@us.TENTK" readonly class="form-control" /></td>
+                </tr>
+                 <tr style="border:hidden;">
+                    <td style="text-align:right;"> Mật Khẩu hiện tại: </td>
+                    <td><input type="password" name="Pass" class="form-control" />@ViewData["LoiPass"]</td>
+                </tr>
+                 <tr style="border:hidden;">
+                    <td style="text-align:right;"> Mật Khẩu Mới: </td>
+                    <td><input type="password" name="NewPass" class="form-control" />@ViewData["LoiNewPass"]</td>
+                </tr>
+                 <tr style="border:hidden;">
+                    <td style="text-align:right;"> Nhập Lại Mật Khẩu Mới: </td>
+                    <td><input type="password" name="RePass" class="form-control" />@ViewData["LoiRePass"]</td>
+                </tr>
+            </table>
+                <input type="submit" value="Đổi Mật Khẩu" class="btnSignIn" />
+ }
+     </div>
+</div>

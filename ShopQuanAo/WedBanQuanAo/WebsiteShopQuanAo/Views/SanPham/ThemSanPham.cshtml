@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "ThemSanPham";
+    Layout = "~/Views/Shared/_LayoutPageHome2.cshtml";
+}
+
+<style>
+    #divNavigation {
+        display: none;
+    }
+</style>
+<div class="width-details">
+    <div class="container text-center mt-4">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            {
+        <div class="w-50 mx-auto">
+            <h2 class="mb-3 fw-normal">ADD NEW PRODUCT</h2>
+            <div class="form-floating">
+                <input type="text" name="TenSP" class="form-control mb-2" placeholder="Product Name"/><h6 class="text-danger">@ViewData["LoiDaTonTaiTenTk"]</h6>
+            </div>
+            <div class="form-floating">
+                <input type="number" name="DonGia" class="form-control mb-2" placeholder="Price"/>
+            </div>
+            <div class="form-floating">
+                <input type="file" name="HinhAnh" class="form-control mb-2" placeholder="Image Name"/><h6 class="text-danger">@ViewData["LoiComfirmPass"]</h6>
+            </div>
+            <div class="form-floating">
+                <input type="text" name="LoaiSP" class="form-control mb-2" placeholder="Category" />
+            </div>
+                <input type="submit" value="ADD NEW" class="btnSignUp" />
+
+
+            </div>
+            }
+        }
+    </div>
+</div>

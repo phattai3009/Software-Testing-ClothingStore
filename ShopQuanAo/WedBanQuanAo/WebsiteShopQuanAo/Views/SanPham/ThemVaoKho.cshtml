@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "ThemVaoKho";
+    Layout = "~/Views/Shared/_LayoutPageHome2.cshtml";
+}
+@model WebsiteShopQuanAo.Models.SANPHAM
+
+<style>
+    #divNavigation {
+        display: none;
+    }
+</style>
+<div class="width-details">
+    <div class="container text-center mt-4">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            {
+        <div class="w-50 mx-auto">
+            <h3 class="mb-3 fw-normal">ADD NEW SIZE</h3>
+            <div class="form-floating">
+                <input type="text" name="MaSP" value ="@Model.MASP" class="form-control mb-2" />
+            </div>
+            <div class="form-floating">
+                <input type="text" name="Size" class="form-control mb-2" />
+            </div>
+            
+            <div class="form-floating">
+                <input type="number" name="SoLuong" class="form-control mb-2" />
+            </div>
+                <input type="submit" value="ADD NEW SIZE" class="btnSignUp" />
+
+
+            </div>
+            }
+        }
+    </div>
+</div>
+

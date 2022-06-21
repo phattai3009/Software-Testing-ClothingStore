@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "XemChiTietKho";
+    Layout = "~/Views/Shared/_LayoutPageHome2.cshtml";
+}
+@using WebsiteShopQuanAo.Models;
+@model List<KHO>
+<style>
+    #divNavigation {
+        display: none;
+    }
+</style>
+
+<div class="width-details">
+    <div class="container text-center mt-4">
+        <h2 class="mb-3 fw-normal" style="text-align:center">Quản Lý Kho</h2>
+
+    <table class="table" style="width:70%; margin:auto; border:hidden">
+        <tr>
+            <th>MÃ HÀNG</th>
+            <th>SIZE</th>
+            <th>SỐ LƯỢNG</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @using (Html.BeginForm("CapNhatSoLuongKho", "SanPham", new { @mahang = item.MASP, @strURL = Request.Url.ToString()}))
+                {
+                <td >@item.MASP</td>
+                <td ><input type="text" name="txtSize" readonly value="@item.SIZE" style="width:170px" /></td>
+                <td ><input type="number" name="txtSoLuong" value="@item.SOLUONG" style="width:170px" /></td>
+                    <td><input type="submit" value="Update" class="btn btn-primary" /></td>  
+                }
+
+            </tr>
+        }
+        </table>
+
+    </div>
+</div>
+

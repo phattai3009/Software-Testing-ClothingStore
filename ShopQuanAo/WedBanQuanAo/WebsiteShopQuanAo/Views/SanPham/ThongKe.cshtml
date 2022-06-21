@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "ThongKe";
+    Layout = "~/Views/Shared/_LayoutPageHome2.cshtml";
+}
+<style>
+    #divNavigation {
+        display: none;
+    }
+</style>
+
+<div class="width-details">
+    <h3 style="text-align:center;padding-bottom:20px">Thống Kê Sản Phẩm Bán Ra Theo Năm</h3>
+    <div class ="row">
+        <div class ="col-md-12">
+            <select id ="dllYear" class="form-control" style="width: 150px">
+                <option value ="@DateTime.Now.Year">Select Year</option>
+                <option value ="2020">2020</option>
+                <option value ="2021">2021</option>
+                <option value ="2022">2022</option>
+                <option value ="2023">2023</option>
+            </select>
+            <div id ="dvChart">
+                <canvas style="height:400px" id ="chartProduct"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/lib/asset/script/Chart.min.js"></script>
+
+    <script>
+
+        $('#dllYear').on('change', function () {
+            var year = $(this).val();
+
+            $.get('/SanPham/ThongKeSanPham?year=' + year, function (resp) {
+                ChartProduct(resp)
+            });
+        });
+
+
+        function ChartProduct(lstData) {
+
+            var lstLabel = [];
+            var lstDataSource = [];
+            $.each(lstData, function (index, item) {
+                lstLabel.push(item.MASP +' - '+ item.SIZE);
+                lstDataSource.push(item.tongsl);
+            });
+
+            var ctx = document.getElementById("chartProduct");
+
+            var barChartData = {
+                labels: lstLabel,
+                datasets: [
+                        {
+                            label: "Số lượng đã bán",
+                            backgroundColor: '#0b9663',
+                            borderWidth: 1,
+                            data: lstDataSource
+                        }
+                ]
+            };
+
+
+            var myBarChart = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+            });
+        }
+    </script>
+}

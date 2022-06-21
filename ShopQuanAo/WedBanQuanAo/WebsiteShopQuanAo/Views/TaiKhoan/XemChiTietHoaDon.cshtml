@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "XemChiTietHoaDon";
+    Layout = "~/Views/Shared/_LayoutPageHome2.cshtml";
+}
+
+@using WebsiteShopQuanAo.Models;
+@model List<Sp_ChiTietGiaoDichResult>
+<style>
+    #divNavigation {
+        display: none;
+    }
+</style>
+
+<div class="width-details">
+    <div class="container text-center mt-4">
+        <h2 class="mb-3 fw-normal" style="text-align:center">Chi Tiết Giao Dịch</h2>
+         <table class="table" style="width:100%; margin:auto; border:hidden">
+                <tr style="border-bottom:1px solid black" >
+                    <th>TÊN SẢN PHẨM</th>
+                    <th>ĐƠN GIÁ</th>
+                    <th>SỐ LƯỢNG</th>
+                    <th>THÀNH TIỀN</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="30%">@item.TENSP - @item.SIZE </td>
+                        <td width="20%">@item.DONGIA</td>
+                        <td width="20%">@item.SOLUONG</td>
+                        <td width="30%">
+                            @if ((item.SOLUONG * item.DONGIA) == 0)
+                            {
+                                    @(item.SOLUONG * item.DONGIA)
+                            }
+                            else
+                            {
+                                @String.Format("{0:0,0} VND",(item.SOLUONG * item.DONGIA))
+                            }
+                        <td> 
+                    </tr>
+                }
+         </table>
+    </div>
+</div>

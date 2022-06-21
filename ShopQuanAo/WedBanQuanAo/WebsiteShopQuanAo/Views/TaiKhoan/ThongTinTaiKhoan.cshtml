@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "ThongTinTaiKhoan";
+    Layout = "~/Views/Shared/_LayoutPageHome2.cshtml";
+}
+@using WebsiteShopQuanAo.Models;
+
+<style>
+    #divNavigation {
+        display: none;
+    }
+</style>
+<div class="width-details">
+    <div class="container text-center mt-4">
+@using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        var us = Session["User"] as TAIKHOAN;
+        var kh = Session["Customer"] as TAIKHOANKHACHHANG;
+        <h2 class="mb-3 fw-normal">THÔNG TIN TÀI KHOẢN</h2>
+        
+        if(kh != null)
+        {
+             <a style="text-align:right;">Hạng tài khoản: @kh.LOAITK </a>
+             <img src="/Images/@kh.ANH" width="50px" height="50px" alt="Image">       
+        }
+        <table class="table" style="width:60%; margin:auto; border:hidden">
+            <tr style="border:hidden;">
+                <td style="text-align:right; width:30%">Tên Đăng nhập: </td>
+                <td><input type="text" name="UserName" value="@us.TENTK" readonly class="form-control" /></td>
+            </tr>
+             <tr style="border:hidden;">
+                <td style="text-align:right;">Họ Và Tên: </td>
+                <td><input type="text" name="Ten" value="@us.HOTEN" class="form-control" /></td>
+            </tr>
+            <tr style="border:hidden;">
+                <td style="text-align:right;">Email: </td>
+                <td><input type="text" name="Email" value="@us.EMAIL" class="form-control" /></td>
+            </tr>
+             <tr style="border:hidden;">
+                <td style="text-align:right;"> Số Điện Thoại: </td>
+                <td><input type="text" name="SDT" value="@us.SDT" class="form-control" /></td>
+            </tr>
+             <tr style="border:hidden;">
+                    <td style="text-align:right;"> Giới Tính: </td>
+                    <td><input type="text" name="GioiTinh" value="@us.GTINH" class="form-control" /></td>
+             </tr>
+             <tr style="border:hidden;"> 
+                    <td style="text-align:right;"> Ngày Sinh: </td>
+                    <td><input type="text" value ="@us.NGSINH.Value.ToString("dd/MM/yyyy")" readonly class="form-control" /></td>
+             </tr>
+             <tr style="border:hidden;">
+                    <td style="text-align:right;"> DiaChi: </td>
+                    <td><input type="text" name="DiaChi" value="@us.DCHI" class="form-control" /></td>
+             </tr>
+             <tr style="border:hidden;">
+                <td style="text-align:right;"> Mật Khẩu hiện tại: </td>
+                <td><input type="password" name="KTPass" class="form-control" />@ViewData["LoiPass"]</td>
+            </tr>
+
+        </table>
+            <input type="submit" value="Cập Nhật" class="btnSignIn" />
+    }
+    </div>
+</div>

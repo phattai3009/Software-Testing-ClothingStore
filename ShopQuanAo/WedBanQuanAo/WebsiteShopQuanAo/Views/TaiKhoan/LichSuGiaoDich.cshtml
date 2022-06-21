@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "LichSuGiaoDich";
+    Layout = "~/Views/Shared/_LayoutPageHome2.cshtml";
+}
+
+@using WebsiteShopQuanAo.Models;
+@model List<HOADON>
+<style>
+    #divNavigation {
+        display: none;
+    }
+</style>
+
+<div class="width-details">
+    <div class="container text-center mt-4">
+        <h2 class="mb-3 fw-normal" style="text-align:center">Lịch sử giao dịch</h2>
+         <table class="table" style="width:100%; margin:auto; border:hidden">
+                <tr style="border-bottom:1px solid black" >
+                    <th>NGÀY TẠO</th>
+                    <th>ĐỊA CHỈ GIAO</th>
+                    <th>TỔNG TIỀN HÀNG</th>
+                    <th>TIỀN GIẢM</th>
+                    <th>THÀNH TIỀN</th>
+                    <th>CHỨC NĂNG</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="10%">@item.NGTAO.Value.ToString("dd/MM/yyyy")</td>
+                        <td width="30%">@item.DIACHIGH</td>
+                        <td width="20%">
+                            @if (@item.TONGTIEN == 0)
+                            {
+                                    @item.TONGTIEN
+                            }
+                            else
+                            {
+                                @String.Format("{0:0,0} VND",item.TONGTIEN)
+                            }
+                        </td>
+                        <td width="20%">
+                            @if ((item.TIENGIAMGIA + item.TIENGIAMTAIKHOAN) == 0)
+                            {
+                                
+                                   @(item.TIENGIAMGIA + item.TIENGIAMTAIKHOAN)
+                            }
+                            else
+                            {
+                                @String.Format("{0:0,0} VND",(item.TIENGIAMGIA + item.TIENGIAMTAIKHOAN))
+                            }
+                        </td>
+                        <td width="20%">
+                            @if (item.THANHTOAN == 0)
+                            {
+                                    @item.THANHTOAN
+                            }
+                            else
+                            {
+                                @String.Format("{0:0,0} VND",item.THANHTOAN)
+                            }
+                        </td>
+                        <td>@Html.ActionLink("Details", "XemChiTietHoaDon", new { @mahd = item.MAHD })</td>
+                    </tr>
+                }
+         </table>
+    </div>
+</div>
